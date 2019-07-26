@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta http-equiv="Content-type" content="text/html; charset=utf-8">
+    <title>Home Page</title>
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.1/jquery.min.js"></script>
+    <script>
+        //liveFilter 1.1 plugin
+        var catgory = 'All';
+        var filter = '';
+        (function ($) {
+            $.fn.liveFilter = function (wrapper) {
+                var wrap = '#' + $(this).attr('id');
+                var item = 'li';
+                $('input.filter').keyup(function () {
+                    filter = $(this).val();
+
+                    // Hide all the items and then show only the ones matching the filter
+                    $(wrap + ' ' + wrapper + ' ' + item).hide();
+                    $(wrap + ' ' + wrapper + ' ' + item + ':Contains("' + filter + '")').show();
+                    $(wrap + ' ' + wrapper + ' ' + item + ':linot(.' + category + ')').hide();
+                });
+
+                // Custom expression for case insensitive contains()
+                jQuery.expr[':'].Contains = function (a, i, m) {
+                    return jQuery(a).text().toUpperCase().indexOf(m[3].toUpperCase()) >= 0;
+                };
+            }
+        })(jQuery);
+    </script>
+    <script type="text/javascript">
+        // Activate liveFilter plugin
+        $(document).ready(function () {
+            $('#list_wrapper').liveFilter('ul');
+        });
+    </script>
+
+    <script>
+        // Filter Results by Category (not part of liveFilter)
+        $(document).ready(function () {
+            $('#filter-buttons a').click(function (e) {
+                e.preventDefault();
+                category = $(this).attr('id');
+                $('#list_wrapper ul li').hide();
+                $('#list_wrapper ul li:Contains("' + filter + '")').show();
+                $('#list_wrapper ul li:not(.' + category + ')').hide();
+            });
+        });
+    </script>
+
+</head>
+
+<body>
+    <h1>Movie Page</h1>
+    <a href="/home">Back</a>
+    <br><br><br>
+    <div id="page_wrapper">
+        <div id="list_wrapper">
+            <input class="filter" name="livefilter" type="text" value="" />
+
+            <div id="filter-buttons">
+                <a href='#'>All</a>
+                <a href='#' id='Action'>Action</a>
+                <a href='#' id='Adventure'>Drama</a>
+            </div>
+
+            <ul class="live_filter">
+                 <% for(var i=0; i < movieList.length; i++){ %>
+                   <table >
+                       <td>
+                           <li class="<%=movieList[i].subcategory%>">
+                               <%=movieList[i].name%>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                               <a href=" <%=movieList[i].dwnldlink%>">Download</a></li>
+                       </td>
+                   </table>
+
+                 <% } %>
+            </ul>
+        </div>
+    </div>
+</body>
+
+</html>

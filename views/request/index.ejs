@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Request List page</title>
+</head>
+
+<body>
+    <h1>Request List</h1>
+       <%if(status == 1){%> 
+      <a href="/adminhome">Back</a> |
+      <%}else{%>
+      <a href="/moderatorhome">Back</a> |
+      <%}%>
+    <a href="/logout">Logout</a>
+
+    <table border="1">
+        <tr>
+            <td>ID</td>
+            <td>Category</td>
+            <td>SubCategory</td>
+            <td>Name</td>
+            
+        </tr>
+
+        <% for(var i=0; i < req.length; i++){ %>
+
+        <tr>
+            <td><%= req[i].id %></td>
+            <td><%= req[i].category %></td>
+            <td><%= req[i].subcategory %></td>
+            <td><%= req[i].name %></td>
+        </tr>
+
+        <% } %>
+    </table>
+
+</body>
+
+</html>

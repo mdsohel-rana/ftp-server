@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<title>Add Content page</title>
+</head>
+
+<body>
+	<h1>Add Content</h1>
+	<a href="/content">Back</a>
+	<a href="/logout">logout</a>
+	<br><br>
+	<table>
+		<form method="post">
+
+			<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+			<tr>
+				<td>Category:</td>
+				<td>
+					<select name="category" id="category">
+						<option value="Movie">Movies</option>
+						<option value="Webseries">Web Series</option>
+						<option value="Drama">Drama</option>
+						<option value="Song">Song</option>
+					</select>
+				</td>
+			</tr>
+			<tr>
+				<td>Sub Category:</td>
+				<td>
+					<select name="subcategory" id="subcategory">
+						<optgroup label="Movie">
+							<option value="Action">Action</option>
+							<option value="Adventure">Adventure</option>
+						</optgroup>
+						<optgroup id="B" label="Webseries">
+							<option value="English">English</option>
+							<option value="Bangla">Bangla</option>
+						</optgroup>
+						<optgroup id="B" label="Drama">
+							<option value="English">English</option>
+							<option value="Bangla">Bangla</option>
+						</optgroup>
+						<optgroup id="B" label="Song">
+							<option value="Rock">Rock</option>
+							<option value="Pop">Pop</option>
+						</optgroup>
+					</select>
+				</td>
+			</tr>
+
+
+			<tr>
+				<td>Name: </td>
+				<td><input type="text" name="name" required=""></td>
+			</tr>
+			<tr>
+				<td>Download Link: </td>
+				<td><input type="text" name="dwnldlink"></td>
+			</tr>
+			<tr>
+				<td>Release Date: </td>
+				<td><input type="date" name="releasedate"></td>
+			</tr>
+			<tr>
+				<td><input type="submit" name="" value="Add Content"></td>
+				<td></td>
+			</tr>
+		</form>
+	</table>
+	<script>
+		$(document).ready(function () {
+			var $optgroups = $('#subcategory > optgroup');
+
+			$("#category").on("change", function () {
+				var selectedVal = this.value;
+
+				$('#subcategory').html($optgroups.filter('[label="' + selectedVal + '"]'));
+			});
+		});
+	</script>
+</body>
+
+</html>

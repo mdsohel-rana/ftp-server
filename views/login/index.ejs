@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<title>Login page</title>
+</head>
+
+<body>
+	<h1>LOGIN PAGE</h1>
+	<%if(typeof error !="undefined"){%>
+		<%=error%>
+		<%}%>
+	<table>
+		<form method="post">
+
+			<tr>
+				<td>email :</td>
+				<td><input type="email" name="email"></td>
+			</tr>
+			<tr>
+				<td>Password: </td>
+				<td><input type="password" name="password"></td>
+			</tr>
+			<tr>
+				<td><input type="submit" name="" value="Log In"></td>
+			</tr>
+
+		</form>
+		<tr>
+			<td>Not a member?<a href="/register">Register<a></td>
+		</tr>
+		
+	</table>
+</body>
+
+</html>

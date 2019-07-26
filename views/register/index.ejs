@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<title>Registration page</title>
+</head>
+
+<body>
+	<h1>Registration PAGE</h1>
+	<%if(typeof errors != "undefined"){%>
+	<% errors.forEach(function(err){ %>
+	<%=err.msg%> <br />
+	<% }); %>
+	<% }else if(typeof sucess != "undefined"){ %>
+	<%=sucess%>
+	<% }else if(typeof exist != "undefined"){ %>
+	<%=exist%>
+	<%}%>
+		<table>
+			<form method="post">
+			<tr>
+				<td>email :</td>
+				<td><input type="email" name="email"  required=""></td>
+			</tr>
+			<tr>
+				<td>Name: </td>
+				<td><input type="text" name="username" required=""></td>
+			</tr>
+			<tr>
+				<td>Password: </td>
+				<td><input type="password" name="password" ></td>
+			</tr>
+			<tr>
+				<td>Chose Position: </td>
+				<td><input type="radio" name="position" value="1">Admin</td>
+				<td><input type="radio" name="position" value="2">Moderator</td>
+			</tr>
+			<tr>
+				<td><input type="submit" name="" value="Register"></td>
+				<td></td>
+			</tr>
+				</form>
+
+			<tr>
+				<td>
+					<a href="/login"><button>Login</button></a>
+				</td>
+			</tr>
+		</table>
+</body>
+</html>

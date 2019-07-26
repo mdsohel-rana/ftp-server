@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>User List page</title>
+</head>
+
+<body>
+    <h1>User List</h1>
+
+    <a href="/content">Back</a> |
+    <a href="/logout">Logout</a>
+
+    <table border="1">
+        <tr>
+            <td>ID</td>
+            <td>Category</td>
+            <td>SubCategory</td>
+            <td>Name</td>
+            <td>Release Date</td>
+            <td>Action</td>
+        </tr>
+
+        <% for(var i=0; i < content.length; i++){ %>
+
+        <tr>
+            <td><%= content[i].id %></td>
+            <td><%= content[i].category %></td>
+            <td><%= content[i].subcategory %></td>
+            <td><%= content[i].name %></td>
+            <td><%= content[i].releasedate %></td>
+            <td>
+                <a href="/content/delete/<%= content[i].id%>">Delete</a>
+            </td>
+        </tr>
+
+        <% } %>
+    </table>
+
+</body>
+
+</html>

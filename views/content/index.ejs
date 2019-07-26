@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Home page</title>
+</head>
+
+<body>
+    <h1>Home PAGE</h1>
+    <p>Welcome home </p>
+    <%if(status == 1){%>
+    <a href="/adminhome">Back</a> |
+    <%}else{%>
+        <a href="/moderatorhome">Back</a> |
+        <%}%>
+    <a href="/content/add">Add Content</a> |
+    <a href="/content/edit">View Content</a> |
+    <a href="/logout">Logout</a>
+
+</body>
+
+</html>
